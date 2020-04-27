@@ -15,8 +15,11 @@ def main():
     bookLst = []
     # for author in authorLst:
     #     print(miscFunc.find_books(key, author))
-    print(authorLst)
-    print(miscFunc.find_books(key, authorLst[3]))
+    for author in authorLst:
+        pval = miscFunc.find_books(key, author)
+        for p in pval:
+            print("%s Published %d,%d" %(p.title(), p.publication_month(), p.publication_year()))
+        print(len(pval))
 
     """
     new plan use find_books func to collect a list of work obj from each of the authors
