@@ -11,9 +11,7 @@ This script works under the assumption that if an author's book has a missing ye
 4. At the root level of the directory fill in the file secrets.py
 
 ## TDD
-- set up email
-- send emails
-- add function for other users to enter their USER ID and have an email be immediately sent 
+- add function for other users to enter their USER ID and have an email be immediately sent
 
 # Future Notes:
 - N/A

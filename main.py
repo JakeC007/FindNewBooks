@@ -37,21 +37,32 @@ def main():
 
 
     #generate email body
-    body = f"Hey there!\n\n Some of your favorite authors have new books out that you haven't read yet: \n {unpack(bookLst)}"\
-           f"\nRemember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
-           f"please edit your shelf entitled 'authors-follow'.\n\n Happy reading!\n\n Love,\n The Book Finder Bot"
+    bodyHTML = f"<html>\n<body\n><p>Hey there!</p>\n <p>Some of your favorite authors have new books out that you haven't read yet:</p>\n <ul>{unpack(bookLst, True)}\n</ul>\n"\
+           f"<p>That's {len(bookLst)} new books to read! Remember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
+           f"please edit your shelf entitled <em>authors-follow</em>.</p>\n <p>Happy reading!</p>\n <p>Love,</p>\n <p>The Book Finder Bot</p>\n"\
+           f"<p><br></p>\n<p><br></p>\n<p>This email was sent by <em>The Book Finder Bot</em>."\
+           f" Its github repo can be found <a href= 'https://github.com/JakeC007/FindNewBooks' rel = 'noopener noreferrer' target='_blank'>here</a></p>\n</body>\n</html>"
 
-    send_the_mail(body, jakeEmail)
+    bodyTxt = f"Hey there!\n\n Some of your favorite authors have new books out that you haven't read yet:\n {unpack(bookLst)}\n\n"\
+           f"That's {len(bookLst)} new books to read! Remember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
+           f"please edit your shelf entitled 'authors-follow'.\n\n Happy reading!\n\n Love,\n The Book Finder Bot\n"\
+           f"\n\nThis email was sent by The Book Finder Bot."\
+           f" Its github repo can be found at https://github.com/JakeC007/FindNewBooks"
+
+    send_the_mail(bodyTxt, bodyHTML, jakeEmail)
 
 """
 Pretty string formatting for the books
 @param books - list of book objects
 @return formatted string of books in a list
 """
-def unpack(books):
+def unpack(books, HTML = False):
     retStr = ' '
     for book in books:
-        tempStr = '\t*{0} by {1}\n'.format(book.title(), book.author_name())
+        if HTML == True:
+            tempStr = '\n\t<li>{0} by {1}</li>'.format(book.title(), book.author_name())
+        else:
+            tempStr = '\n\t*{0} by {1}'.format(book.title(), book.author_name())
         retStr+=tempStr
     return retStr
 
