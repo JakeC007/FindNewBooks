@@ -4,13 +4,13 @@ This file contains a function that sends an email
 """
 from secrets import emailPW, jakeEmail
 
-def send_the_mail(msg = " "):
+def send_the_mail(msg = " ", receiverEmail = jakeEmail):
     import smtplib, ssl
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "bookfinderbot1@gmail.com"  # Enter your address
-    receiver_email = jakeEmail  # Enter receiver address
+    sender_email = "bookfinderbot1@gmail.com"
+    receiver_email = receiverEmail
     password = emailPW
     message = "Subject: New Books From Your Favorite Authors!\n\n" + msg
 

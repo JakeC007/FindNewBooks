@@ -4,7 +4,7 @@ April 26, 2020
 Author Jake Chanenson
 """
 
-from secrets import key, secret, usrID
+from secrets import key, secret, usrID, jakeEmail
 from botmail import send_the_mail
 import miscFunc
 from datetime import date
@@ -41,7 +41,7 @@ def main():
            f"\nRemember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
            f"please edit your shelf entitled 'authors-follow'.\n\n Happy reading!\n\n Love,\n The Book Finder Bot"
 
-    send_the_mail(body)
+    send_the_mail(body, jakeEmail)
 
 """
 Pretty string formatting for the books
