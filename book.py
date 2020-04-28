@@ -35,3 +35,52 @@ class GRBook:
 
     def debug(self):
         print(self.book_dict)
+
+class GR_Auth_Book:
+    def __init__(self, book_dict):
+        self.book_dict = book_dict
+
+    def __repr__(self):
+        return self.title
+
+    def title(self):
+        return self.book_dict['title']
+
+    def id(self):
+        return int(self.book_dict['id']['#text'])
+
+    def publication_year(self):
+        return int(self.book_dict['publication_year'])
+
+    def publication_month(self):
+        try:
+            retval = int(self.book_dict['publication_month'])
+        except:
+            retval = -1
+        return retval
+
+    def author_name(self):
+        if type(self.book_dict['authors']['author']) == list:
+            return self.book_dict['authors']['author']['name'] + ' et. al'
+
+        return self.book_dict['authors']['author']['name']
+
+    def author_id(self):
+        return int(self.book_dict['authors']['author']['id'])
+
+    def debug(self):
+        print(self.book_dict)
+
+    def isbn(self):
+        try:
+            retVal = self.book_dict['isbn']
+        except:
+            retval = -1
+        return retval
+
+    def isbn13(self):
+        try:
+            retVal = self.book_dict['isbn13']
+        except:
+            retval = -1
+        return retval
