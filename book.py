@@ -32,3 +32,6 @@ class GRBook:
 
     def author_id(self):
         return int(self.book_dict['best_book']['author']['id']['#text'])
+
+    def debug(self):
+        print(self.book_dict)

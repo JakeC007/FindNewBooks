@@ -18,8 +18,7 @@ Creates a list of user's books taken from their shelves. The user must have thei
 """
 
 def list_user_book_t(key, id = 1, shelf='all'):
-    print("in func 1")
-    return search_user_books(key, id, shelf)
+    return search_user_book_t(key, id, shelf)
 
 
 """
@@ -115,5 +114,7 @@ def find_books(key, q, search = 'author'):
             retLst.append(tempBook)
 
         time.sleep(1.2) #needed as to not violate Goodreads TOS
+        print("Grabbing Books Page %d of %d" % (apiParams['page'], ((total/20)+1)))
         apiParams['page']+=1 #move to next page
+
     return retLst

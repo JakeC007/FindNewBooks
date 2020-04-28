@@ -4,22 +4,52 @@ April 26, 2020
 Author Jake Chanenson
 """
 
-from secrets import key, secret
+from secrets import key, secret, usrID
 from goodreads import client
 import miscFunc
 import time
+from datetime import date
 
 
 def main():
-    authorLst = miscFunc.list_user_authors(key, 50914049, 'authors-follow')
+    currentYear = date.today().year
     bookLst = []
-    # for author in authorLst:
-    #     print(miscFunc.find_books(key, author))
+    tempBookLst = []
+    authorStr = ""
+    authorLst = miscFunc.list_user_authors(key, usrID, 'authors-follow')
+    print("Pulled Authors")
+    print("Grabbing First Author's Books")
+    #get each author's book list, and keep the books that were published within 2 years
     for author in authorLst:
-        pval = miscFunc.find_books(key, author)
-        for p in pval:
-            print("%s Published %d,%d" %(p.title(), p.publication_month(), p.publication_year()))
-        print(len(pval))
+        authorStr+= author+" "
+         tempAuthorBooks = miscFunc.find_books(key, author)
+         print("Pulled Next Author's Books")
+         for book in tempAuthorBooks:
+             if((book.publication_year() >=currentYear-2) and (book.publication_year() <= currentYear)):
+                 tempBookLst.append(book)
+
+    titlesUsrRead = miscFunc.list_user_book_t(key, usrID, 'read')
+    for tb in tempBookLst:
+        if(tb.title() in titlesUsrRead):
+            bookLst.append(tb)
+
+    #remove untitled books from list
+
+    #write email
+        #author string
+        #formatted lst 
+
+
+
+
+
+
+
+
+
+
+
+
 
     """
     new plan use find_books func to collect a list of work obj from each of the authors
