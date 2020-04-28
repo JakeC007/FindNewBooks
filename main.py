@@ -5,41 +5,46 @@ Author Jake Chanenson
 """
 
 from secrets import key, secret, usrID
-from goodreads import client
 import miscFunc
-import time
 from datetime import date
 
 
 def main():
     currentYear = date.today().year
     bookLst = []
-    tempBookLst = []
-    authorStr = ""
+    tempBookLst = [] #cheaper to have a temp lst than use list remove--thats O(n)
+
+    #get the list of authors that the user is interested in
     authorLst = miscFunc.list_user_authors(key, usrID, 'authors-follow')
-    print("Pulled Authors")
+    print("Pulled List Of Authors")
     print("Grabbing First Author's Books")
 
-    #get each author's book list, and keep the books that were published within 2 years
+    #get list of each author's books, and keep the books that were published within 2 years
     for author in authorLst:
-        authorStr+= author+", "
+        print("Pulling Next Author's Books")
         tempAuthorBooks = miscFunc.find_books(key, author)
-        print("Pulled Next Author's Books")
         for book in tempAuthorBooks:
             if((book.publication_year() >=currentYear-2) and (book.publication_year() <= currentYear)):
                 tempBookLst.append(book)
 
+    #grab the user's read shelf. Compare those titles to the titles in the list of author books and keep the unread
     titlesUsrRead = miscFunc.list_user_book_t(key, usrID, 'read')
     for tb in tempBookLst:
-        if(tb.title() in titlesUsrRead): #TODO make this 'not in'
+        if(tb.title() not in titlesUsrRead):
             bookLst.append(tb)
 
+    #generate email body
     body = f"Hey, \n Some of your favorite authors have new books out that you haven't read: \n {unpack(bookLst)}"\
-           f"These books come from the following authors {authors(lst)} {', '.join(str(x) for x in authorLst)} If you wish to change which authors to follow,"
+           f"\nRemember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
+           f"please edit your shelf entitled 'authors-follow'. "
     print(body)
 
 
-
+"""
+Pretty string formatting for the books
+@param books - list of book objects
+@return formatted string of books in a list
+"""
 def unpack(books):
     retStr = ' '
     for book in books:
@@ -47,11 +52,16 @@ def unpack(books):
         retStr+=tempStr
     return retStr
 
+"""
+Pretty string formatting for the authors
+@param lst - list of author names
+@return formatted string of authors
+"""
 def authors(lst):
-    retStr = ' '
+    retStr = ''
     for i in range(len(lst)):
         if i != len(lst)-1:
-            tempStr = '{0},'.format(lst[i])
+            tempStr = '{0}, '.format(lst[i])
         else:
             tempStr = 'and {0}'.format(lst[i])
         retStr+=tempStr
