@@ -1,7 +1,7 @@
 # Find New Books Bot
 
 ## What is it?
-This bot finds new books from authors that you follow, checks to see if you have read those books, and send you an email with a list of the new books that you haven't read.
+This bot finds new books from authors that you follow, checks to see if you have read those books, and sends you an email with a list of the new books that you haven't read.
 
 ## How it works
 This bot uses information from a Goodread users public *read* shelf to find out what books a user has read. To find out what authors a user is interested, the bot looks for another shelf created by the user called *authors-follow*. It uses these two sets of information plus your email address to send you the list of recently published unreadbooks. 
