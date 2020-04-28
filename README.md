@@ -1,6 +1,6 @@
 # Find New Books Bot
 
-![Goodreads Logo](http://s.gr-assets.com/assets/icons/goodreads_icon_50x50-823139ec9dc84278d3863007486ae0ac.png)
+![Goodreads Logo](http://s.gr-assets.com/assets/icons/goodreads_icon_50x50-823139ec9dc84278d3863007486ae0ac.png) ![Drawing Of A Robot](https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png)
 
 ## What is it?
 This bot finds new books from authors that you follow, checks to see if you have read those books, and sends you an email with a list of the new books that you haven't read.
