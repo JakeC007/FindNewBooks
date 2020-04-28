@@ -1,6 +1,6 @@
 # Find New Books Bot
 
-![Goodreads Logo](http://s.gr-assets.com/assets/icons/goodreads_icon_50x50-823139ec9dc84278d3863007486ae0ac.png)  <img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png" alt="alt text" width="50" height="50">
+![Goodreads Logo](http://s.gr-assets.com/assets/icons/goodreads_icon_50x50-823139ec9dc84278d3863007486ae0ac.png)  <img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png" alt="icon of robot" width="50" height="50">
 
 
 ## What is it?
