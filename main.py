@@ -5,10 +5,10 @@ Author Jake Chanenson
 """
 
 from secrets import key, secret, usrID
+from botmail import send_the_mail
 import miscFunc
 from datetime import date
 import re
-
 
 def main():
     currentYear = date.today().year
@@ -37,11 +37,11 @@ def main():
 
 
     #generate email body
-    body = f"Hey,\n\n Some of your favorite authors have new books out that you haven't read: \n {unpack(bookLst)}"\
+    body = f"Hey there!\n\n Some of your favorite authors have new books out that you haven't read yet: \n {unpack(bookLst)}"\
            f"\nRemember, these books come from the following authors {authors(authorLst)}. If you wish to change which authors to follow, "\
-           f"please edit your shelf entitled 'authors-follow'. "
-    print(body)
+           f"please edit your shelf entitled 'authors-follow'.\n\n Happy reading!\n\n Love,\n The Book Finder Bot"
 
+    send_the_mail(body)
 
 """
 Pretty string formatting for the books
