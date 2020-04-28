@@ -13,6 +13,7 @@ This bot uses information from a Goodread users public *read* shelf to find out 
 - This script works under the assumption that if an author's book has a missing year than it is unpublished or old--both things we are not interested in.
 - ***If Goodreads passes the program garbage data then the program will email you garbage data.***
     - Sometimes there are reissuing of books or Goodreads just has the incorrect year. This causes the email to contain some books that you may not expect to be there. If Goodreads says that a book was published within the last year or so then, assuming the book is unread, that book goes in the email.   
+- This program is not affiliated in anyway with Goodreads.
 
 # Getting this script to work for you
 
