@@ -18,7 +18,7 @@ This bot uses information from a Goodread users public *read* shelf to find out 
 # Getting this script to work for you
 
 ## Goodreads Setup
-1. The script pulls in the list of authors that you are interested in by looking at a shelf entitled *authors-follow*. As such one of the shelves associated with the user identified with `userID` must have a shelf called *authors-follow*. Please fill *authors-follow* with one book from each of the authors that you want the script to look for.  
+1. The script pulls in the list of authors that you are interested in by looking at a shelf entitled *authors-follow*. As such one of the shelves associated with the user (identified with the Goodreads `userID`) must have a shelf called *authors-follow*. Please create a shelf called *authors-follow* and fill it with one book from each of the authors that you want the script to look for.  
 2. The script checks against a user's *read* shelf to see what books by the authors listed in the authors-follow* shelf the user has read. Thus, please ensure that the **user's *read* shelf is up to date**
 
 ## Technical Setup
