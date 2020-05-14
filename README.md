@@ -24,7 +24,7 @@ This bot uses information from a Goodread users public *read* shelf to find out 
 ## Technical Setup
 0. Get a copy of the repository locally repository
 1. If you are on ubuntu ensure that you are using `pip3` which can be installed with the command `sudo apt-get install python3-pip`
-2. Install the following packages:
+2. Install the following packages via `pip`:
     - requests
     - xmltodict
 3. Make 'main.py' executable by running the command `chmod u+x main.py`
