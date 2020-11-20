@@ -27,12 +27,10 @@ This bot uses information from a Goodread users public *read* shelf to find out 
 2. Install the following packages via `pip`:
     - requests
     - xmltodict
-3. Make 'main.py' executable by running the command `chmod u+x main.py`
+3. Make `main.py` executable by running the command `chmod u+x main.py`
 4. At the root level of the directory rename secrets2.py to secrets.py then open the file and fill in the fields.
 5. Run `main.py` with the command `./main.py`
 
-## TDD
-- add function for other users to enter their USER ID and have an email be immediately sent AKA make it a web app
-
-# Future Notes:
+## Posible Future Extensions
+- add function for other users to enter their user ID 
 - fork for web app?
