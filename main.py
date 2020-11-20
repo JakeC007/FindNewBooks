@@ -51,12 +51,13 @@ def main():
 
     send_the_mail(bodyTxt, bodyHTML, jakeEmail)
 
-"""
-Pretty string formatting for the books
-@param books - list of book objects
-@return formatted string of books in a list
-"""
+
 def unpack(books, HTML = False):
+    """
+    Pretty string formatting for the books
+    @param books - list of book objects
+    @return formatted string of books in a list
+    """
     retStr = ' '
     for book in books:
         if HTML == True:
@@ -66,12 +67,12 @@ def unpack(books, HTML = False):
         retStr+=tempStr
     return retStr
 
-"""
-Pretty string formatting for the authors
-@param lst - list of author names
-@return formatted string of authors
-"""
 def authors(lst):
+    """
+    Pretty string formatting for the authors
+    @param lst - list of author names
+    @return formatted string of authors
+    """
     retStr = ''
     for i in range(len(lst)):
         if i != len(lst)-1:

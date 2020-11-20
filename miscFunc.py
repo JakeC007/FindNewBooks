@@ -9,27 +9,25 @@ import xmltodict
 import time
 import book
 
-"""
-Creates a list of user's books taken from their shelves. The user must have their profile public
-@param key - the api key
-@param id - the account you want to search
-@param shelf - the shelf to search
-@return: Lst of book titles
-"""
-
 def list_user_book_t(key, id = 1, shelf='all'):
+    """
+    Creates a list of user's books taken from their shelves. The user must have their profile public
+    @param key - the api key
+    @param id - the account you want to search
+    @param shelf - the shelf to search
+    @return: Lst of book titles
+    """
     return search_user_book_t(key, id, shelf)
 
-
-"""
-Searches a given shelf for a given term. The user must have their profile public
-@param key - the api key
-@param id - the account you want to search
-@param shelf - the shelf to search
-@param search - the string you want to search
-@return: Lst of book titles that match the search
-"""
 def search_user_book_t(key, id = 1, shelf='all', search = None):
+    """
+    Searches a given shelf for a given term. The user must have their profile public
+    @param key - the api key
+    @param id - the account you want to search
+    @param shelf - the shelf to search
+    @param search - the string you want to search
+    @return: Lst of book titles that match the search
+    """
     retLst = []
     apiParams = {'key': key, 'shelf': shelf, 'id': id, 'per_page' : 50, 'page': 1, 'search[query]' : search}
     #Request to get total number of books, and how many are in the first page
@@ -51,14 +49,14 @@ def search_user_book_t(key, id = 1, shelf='all', search = None):
 
     return retLst
 
-"""
-Function finds a list of authors from a given user's shelf
-@param key - the api key
-@param id - the account you want to search
-@param shelf - the shelf to search
-@returns a list of authors and a list of author IDs from a given user's shelf
-"""
 def list_user_authors(key, id = 1, shelf='all'):
+    """
+    Function finds a list of authors from a given user's shelf
+    @param key - the api key
+    @param id - the account you want to search
+    @param shelf - the shelf to search
+    @returns a list of authors and a list of author IDs from a given user's shelf
+    """
         retLstName = []
         retLstID = []
         seenLst = set(retLstName)
@@ -85,14 +83,15 @@ def list_user_authors(key, id = 1, shelf='all'):
             apiParams['page']+=1 #move to next page
 
         return retLstName, retLstID
-"""
-Function searches Goodreads for a given search term and returns a list of orderdDicts. Each dict contains info about each book.
-@param key - the api key
-@param q - the query you want to search
-@param search - the type of search you want to do (title, author, all)
-@return a list of book objects
-"""
+
 def find_books(key, q, search = 'author'):
+    """
+    Function searches Goodreads for a given search term and returns a list of orderdDicts. Each dict contains info about each book.
+    @param key - the api key
+    @param q - the query you want to search
+    @param search - the type of search you want to do (title, author, all)
+    @return a list of book objects
+    """
     retLst = []
     apiParams = {'key': key, 'q' : q, 'search[field]' : search, 'page' : 1}
     #Request to get total number of books, and how many are in the first page
@@ -121,14 +120,14 @@ def find_books(key, q, search = 'author'):
 
     return retLst
 
-"""
-Function searches Goodreads for a given author IDs and returns a list of orderdDicts. Each dict contains info about each book.
-@param key - the api key
-@param q - the query you want to search
-@param search - the type of search you want to do (title, author, all)
-@return a list of book objects
-"""
 def list_author_books(key, authorID):
+    """
+    Function searches Goodreads for a given author IDs and returns a list of orderdDicts. Each dict contains info about each book.
+    @param key - the api key
+    @param q - the query you want to search
+    @param search - the type of search you want to do (title, author, all)
+    @return a list of book objects
+    """
     retLst = []
     seenLst = set(retLst)
     apiParams = {'key': key, 'id' : authorID, 'page' : 1}
@@ -153,7 +152,7 @@ def list_author_books(key, authorID):
                 title = data_dict['GoodreadsResponse']['author']['books']['book'][i]['title']
             except:
                 continue #skip items that don't have a year
-            if title not in seenLst: #prevent duplicate books 
+            if title not in seenLst: #prevent duplicate books
                 seenLst.add(title)
                 tempBook = book.GR_Auth_Book(data_dict['GoodreadsResponse']['author']['books']['book'][i])
                 retLst.append(tempBook)

@@ -7,7 +7,7 @@
 This bot finds new books from authors that you follow, checks to see if you have read those books, and sends you an email with a list of the new books that you haven't read.
 
 ## How it works
-This bot uses information from a Goodread users public *read* shelf to find out what books a user has read. To find out what authors a user is interested, the bot looks for another shelf created by the user called *authors-follow*. It uses these two sets of information plus your email address to send you the list of recently published unreadbooks. 
+This bot uses information from a Goodread users public *read* shelf to find out what books a user has read. To find out what authors a user is interested, the bot looks for another shelf created by the user called *authors-follow*. It uses these two sets of information plus your email address to send you the list of recently published unreadbooks.
 
 ## Disclaimers
 - This script works under the assumption that if an author's book has a missing year than it is unpublished or old--both things we are not interested in.
@@ -31,6 +31,6 @@ This bot uses information from a Goodread users public *read* shelf to find out 
 4. At the root level of the directory rename secrets2.py to secrets.py then open the file and fill in the fields.
 5. Run `main.py` with the command `./main.py`
 
-## Posible Future Extensions
-- add function for other users to enter their user ID 
+## Possible Future Extensions
+- add function for other users to enter their user ID
 - fork for web app?
